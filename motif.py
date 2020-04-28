@@ -1,53 +1,55 @@
 #!/usr/bin/env python3
-#print interation of function output
-#store an item from the list in a string that as changing each iteration
+
 #gaining access to regular expression module
 import re
 
-#call function with parameters list of split strings and kmer variable
+#set variable equal to kmer 
 sixmer = "TGGCGA"
 
-#create a dictionary that contains split strings and kmer variable
+#open file with sequence to read it , set handle
 with open ("og_seq.fasta", "r") as in_handle:
+	
+#interpret handle and set interpretation to variable
 	sequence = in_handle.read()
 
-#iterate through function output
+#turn variable holding read file into a collection of strings
 seq = str(sequence)
 
-#take last item in list of split strings, out of list
+#break string at desired kmer, creating a list and save as variable
 seq_list = sequence.split(sixmer)
 
-#open file with sequence to read it , set handle
-#break string at desired kmer, creating a list and save as variable
-print(seq_list)
-
-#turn variable holding read file into a collection of strings
-seq_list.remove(seq_list[0])
-
-#break string at desired kmer, creating a list and save as variable
-print(seq_list)
-
-#set variable equal to kmer 
-#assign output from function to variable 
-def prepend(list, str):
-
 #print list of split strings
-	str += "{0}"
+print(seq_list)
 
 #take first item in list of split strings, out of the list
-	list = [str.format(i) for i in list]
+seq_list.remove(seq_list[0])
 
 #print list of split strings (sans first item)
-	return (list)
+print(seq_list)
 
+#create function that takes in two parameters #the two parameters take in two different collections
 #sort list of split strings without the first item
-repeat_list = prepend(seq_list, sixmer)
+def prepend(list, str):
 
-#interpret handle and set interpretation to variable
-#create function that takes in two parameters
-for item in repeat_list:
+	str += "{0}"
 
-#the two parameters take in two different collections
-	print(item)
+#break string at desired kmer, creating a list and save as variable
+#store an item from the list in a string that as changing each iteration
+	list = [str.format(i) for i in list]
+
 
 #retreive list from function
+	return (list)
+
+#call function with parameters list of split strings and kmer variable
+#assign output from function to variable 
+repeat_list = prepend(seq_list, sixmer)
+
+#iterate through function output
+for item in repeat_list:
+
+#print interation of function output
+	print(item)
+
+
+#take last item in list of split strings, out of list
